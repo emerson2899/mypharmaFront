@@ -1,114 +1,77 @@
-import react from "react";
+
+import { useEffect } from "react";
+import { useState } from "react";
 import { Prod } from "../components/style";
+import apiProducts from "../components/api";
 
 
 
 
-function Products(){
 
-    return(<>
+export default function Products(){
 
-    <label>Localizar Produto:</label>
-    <input type="text" />
-    <div className="cont">
-    <Prod>
-    Produto:  <br/>
+    const [products, setProducts] = useState([]);
 
-    código: <br/>
+   /* const loadProducts = () =>{
+        fetch('http://localhost:4000/api/homeRemedios')
+        .then(response => response.json()) 
+        .then((json) => {
+            setProducts(json)
+        })
+    } */
 
-    Descrição: <br/>
-
-    Preço: <br/>
-
-    Estoque: <br/>
-
-    Categoria: <br/>
-
-    Marca: <br/>
-
-
-
-    </Prod>
-    <Prod>
-    Produto:  <br/>
-
-código: <br/>
-
-Descrição: <br/>
-
-Preço: <br/>
-
-Estoque: <br/>
-
-Categoria: <br/>
-
-Marca: <br/>
-    </Prod>
-    <Prod>
-    Produto:  <br/>
-
-código: <br/>
-
-Descrição: <br/>
-
-Preço: <br/>
-
-Estoque: <br/>
-
-Categoria: <br/>
-
-Marca: <br/>
-    </Prod>
-    <Prod>
-    Produto:  <br/>
-
-código: <br/>
-
-Descrição: <br/>
-
-Preço: <br/>
-
-Estoque: <br/>
-
-Categoria: <br/>
-
-Marca: <br/>
-    </Prod>
-    <Prod>
-    Produto:  <br/>
-
-código: <br/>
-
-Descrição: <br/>
-
-Preço: <br/>
-
-Estoque: <br/>
-
-Categoria: <br/>
-
-Marca: <br/>
-    </Prod>
-    <Prod>
-    Produto:  <br/>
-
-código: <br/>
-
-Descrição: <br/>
-
-Preço: <br/>
-
-Estoque: <br/>
-
-Categoria: <br/>
-
-Marca: <br/>
-    </Prod>
-
-    </div>
-    <br/>   
- 
     
-    </>)
+ useEffect(() =>{
+        apiProducts.get('homeRemedios').then(({data}) => {
+            setProducts(data);
+        });
+    }, [])
+
+    console.log(products)
+  
+    
+    return(
+        <div>
+   
+       <label>Localizar Produto:</label>
+       <input type="text" />
+       <div className="cont">
+        <h1>Total de Produtos: {products.length}</h1>
+       
+
+
+           {products.map(produto =>(
+             <Prod key={produto.id}>
+            <strong>Produto:</strong>{produto.name}  <br/>
+         
+            <strong>código:</strong> {produto.id} <br/>
+         
+            <strong>Descrição: </strong> {produto.description} <br/>
+         
+            <strong>Preço:</strong> {produto.price} <br/>
+         
+            <strong>Estoque:</strong> {produto.estoque} <br/>
+         
+            <strong> Categoria: </strong> {produto.category} <br/>
+         
+            <strong> Marca: </strong>{produto.brandin} <br/>
+         
+         
+         
+             </Prod>
+           )
+
+           )}
+            
+           
+
+           
+          
+           
+       
+     </div>
+     </div>
+    )
 }
-export default Products
+
+

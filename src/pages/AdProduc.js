@@ -25,7 +25,7 @@ return(<div>
           <label>Código: </label> 
           <input type="text" placeholder="Automatico"  /> <br/><br/>
           <label>Nome:</label> <input type='text' value={nome} onchange={(e) => setnome(e.target.value)} /> <br/><br/>
-          <label>Descrição:</label> <input type='text' value={description} onchange={(e) => setDescription(e.target.value)} /> <br/><br/>
+          <label>Descrição:</label> <textarea type='text' value={description} onchange={(e) => setDescription(e.target.value)} /> <br/><br/>
           <label>Preço:</label> <input type='number' value={preco} onchange={(e) => setpreco(e.target.value)} />  <br/><br/>
           <label>Estoque:</label> <input type="number" value={estoque} onchange={(e) => setEstoque(e.target.value)} /> <br/><br/>
           <label>Categoria:</label> <input type='text' value={categoria} onchange={(e) => setCategoria(e.target.value)} /> <br/><br/>
