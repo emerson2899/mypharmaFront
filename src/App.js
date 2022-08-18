@@ -1,6 +1,6 @@
-import logo from './logo.svg';
+
 import './App.css';
-import { Body, Menu } from './components/style';
+import { Body } from './components/style';
 import Cadastro from './pages/Cadastro';
 import Users from './pages/Users';
 import Products from './pages/Products';
@@ -11,8 +11,9 @@ import Fornecedor from './pages/Fornecedor';
 import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
 
 
+
 function App() {
-  let loged = false;
+  let loged = true;
   return (    
       <Body>     
         <BrowserRouter>
@@ -20,16 +21,16 @@ function App() {
         <ul >
           <li>
             <Link to="/">Home</Link>
-          </li> {loged == true &&
+          </li> {loged === true &&
           <li>
             <Link to="/Users">Usuários </Link>
           </li> }
           <li>
             <Link to='/Products'>Produtos</Link>
-          </li> {loged == true &&
+          </li> {loged === true &&
           <li><Link to="/AdProduct">Adicionar Produto</Link></li> }
           <li><Link to='/cadastro'>Cadastro</Link></li>
-          <li><Link to='/Login'>Login</Link></li> {loged == true &&
+          <li><Link to='/Login'>Login</Link></li> {loged === true &&
           <li><Link to='/Fornecedor'>Fornecedor</Link></li> }
         </ul>
       </nav>
